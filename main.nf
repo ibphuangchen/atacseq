@@ -1069,15 +1069,15 @@ process MERGED_LIB_PLOTPROFILE {
         --afterRegionStartLength 3000 \\
         --skipZeros \\
         --smartLabels \\
-        --numberOfProcessors $task.cpus
+        --numberOfProcessors ${task.cpus}
 
     plotProfile --matrixFile ${prefix}.computeMatrix.rp.mat.gz \\
-        --outFileName ${prefix}.plotProfile.rp.pdf \\
-        --outFileNameData ${prefix}.plotProfile.rp.tab
+        --outFileName ${prefix}.rp.plotProfile.pdf \\
+        --outFileNameData ${prefix}.rp.plotProfile.tab
 
     plotHeatmap --matrixFile ${prefix}.computeMatrix.rp.mat.gz \\
-        --outFileName ${prefix}.plotHeatmap.rp.pdf \\
-        --outFileNameMatrix ${prefix}.plotHeatmap.rp.mat.tab
+        --outFileName ${prefix}.rp.plotHeatmap.pdf \\
+        --outFileNameMatrix ${prefix}.rp.plotHeatmap.mat.tab
 
     """
 }
