@@ -1058,6 +1058,27 @@ process MERGED_LIB_PLOTPROFILE {
     plotHeatmap --matrixFile ${prefix}.computeMatrix.mat.gz \\
         --outFileName ${prefix}.plotHeatmap.pdf \\
         --outFileNameMatrix ${prefix}.plotHeatmap.mat.tab
+    
+    computeMatrix reference-point \\
+        --referencePoint TSS \\
+        --regionsFileName $bed \\
+        --scoreFileName $bigwig \\
+        --outFileName ${prefix}.computeMatrix.rp.mat.gz \\
+        --outFileNameMatrix ${prefix}.computeMatrix.vals.rp.mat.tab \\
+        --beforeRegionStartLength 3000 \\
+        --afterRegionStartLength 3000 \\
+        --skipZeros \\
+        --smartLabels \\
+        --numberOfProcessors $task.cpus
+
+    plotProfile --matrixFile ${prefix}.computeMatrix.rp.mat.gz \\
+        --outFileName ${prefix}.plotProfile.rp.pdf \\
+        --outFileNameData ${prefix}.plotProfile.rp.tab
+
+    plotHeatmap --matrixFile ${prefix}.computeMatrix.rp.mat.gz \\
+        --outFileName ${prefix}.plotHeatmap.rp.pdf \\
+        --outFileNameMatrix ${prefix}.plotHeatmap.rp.mat.tab
+
     """
 }
 
